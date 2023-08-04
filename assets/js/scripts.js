@@ -11,12 +11,12 @@
 
 var aItems = [
     /* 0 => */  [
-        /* 0 => */'Can Goods', 
+        /* 0 => */'Canned Goods', 
         /* 1 => */360
     ],
 
     ['Rice', 1300],
-    ['Junkfoods', 124],
+    ['Junk Foods', 120],
     ['Liquor', 275],
     ['Pork', 330],   
 ];
@@ -28,8 +28,8 @@ function displayItems(arrItems) {
     for(var i = 0; i < arrItems.length; i++) {
         // sList += "<li><span>" + i + " : " + arrItems[i] + "</span><button onclick='removeItem("+ i +");'>X</button></li>";
         sList += `<li>${i}:<span>${arrItems[i][0]}</span><span>${arrItems[i][1]}</span>
-            <button onclick='editItem(${i});'>E</button>
-            <button onclick='removeItem(${i});'>X</button>
+            <button onclick='editItem(${i});'>&Eopf;</button>
+            <button onclick='removeItem(${i});'>&Xopf;</button>
         </li>`;
     }
     
@@ -56,35 +56,31 @@ function editItem(arrIndex) {
 }
 
 // Update Item on List
-// document.querySelector('#btnUpdate').addEventListener('click', function(arrNum) {
-//     arrNum = indexHolder;
-//     editValue = document.querySelector('#ul-lists').innerText = aItems[arrNum][0];
-//     editPrice = document.querySelector('#ul-lists').innerText = aItems[arrNum][1];
+document.querySelector('#btnUpdate').addEventListener('click', function(arrNum) {
+    arrNum = indexHolder;
 
-//     console.log(editValue);
-//     console.log(editPrice);
-    
-//     const newValue = document.querySelector('#txtItem').value = editValue;
-//     const newPrice = document.querySelector('#txtPrice').value = editPrice;   
+    const newValue = document.querySelector('#txtItem').value;
+    const newPrice = parseFloat(document.querySelector('#txtPrice').value);   
     
     // aItems[arrNum] = [editValue, editPrice];
-//     aItems.splice(arrNum, 0, [newValue, newPrice]);
-//     console.log("index => " + arrNum);
+    aItems.splice(arrNum, 1, [newValue, newPrice]);
+    console.log("index => " + arrNum);
     
-//     displayItems(aItems);
-// });
+    clearInputFields();
+    displayItems(aItems);
+});
 
 //Update the item on list
-document.querySelector('#btnUpdate').addEventListener('click', function() {
-    const newValue = document.querySelector('#txtItem').value;
-    const newPrice = Number(document.querySelector('#txtPrice').value);
+// document.querySelector('#btnUpdate').addEventListener('click', function() {
+//     const newValue = document.querySelector('#txtItem').value;
+//     const newPrice = Number(document.querySelector('#txtPrice').value);
 
-    if (!isNaN(newPrice)) {
-        aItems[indexHolder] = [newValue, newPrice];
-        displayItems(aItems);
-        clearInputFields();
-    }
-});
+//     if (!isNaN(newPrice)) {
+//         aItems[indexHolder] = [newValue, newPrice];
+//         displayItems(aItems);
+//         clearInputFields();
+//     }
+// });
 
 //Remove Item on List
 function removeItem(arrIndex) {
