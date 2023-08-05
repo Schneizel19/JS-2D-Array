@@ -9,35 +9,31 @@
 //     'Pork',
 // ];
 
-var aItems = [
-    /* 0 => */  [
-        /* 0 => */'Canned Goods', 
-        /* 1 => */360
-    ],
-
+var aItems = /*JSON.parse(localStorage.getItem('aItems')) || */ [
+    ['Canned Goods', 20],
     ['Rice', 1300],
     ['Junk Foods', 120],
     ['Liquor', 275],
-    ['Pork', 330],   
+    ['Adodong Pork', 330],   
 ];
 
-displayItems(aItems);
+// console.log(localStorage.setItem('aItems', JSON.stringify(aItems)));
+displayItems(aItems); 
+
 
 function displayItems(arrItems) {
     var sList = "";
     for(var i = 0; i < arrItems.length; i++) {
         // sList += "<li><span>" + i + " : " + arrItems[i] + "</span><button onclick='removeItem("+ i +");'>X</button></li>";
-        sList += `<li>${i}:<span>${arrItems[i][0]}</span><span>${arrItems[i][1]}</span>
+        sList += `<li><span>${arrItems[i][0]}</span><span>&#x20B1;${arrItems[i][1]}</span>
             <button onclick='editItem(${i});'>&Eopf;</button>
             <button onclick='removeItem(${i});'>&Xopf;</button>
         </li>`;
     }
-    
+
     document.querySelector("#ul-lists").innerHTML = sList;
     console.table(aItems);
 }
-
-
 
 //Edit Item on List
 let editValue = '';
@@ -46,9 +42,10 @@ let indexHolder = 0;
 
 function editItem(arrIndex) {
     indexHolder = arrIndex;
-    editValue = aItems[arrIndex][0]
+    editValue = aItems[arrIndex][0];
     editPrice = aItems[arrIndex][1];
 
+    document.querySelector('#indexNum').value = arrIndex;
     const newValue = document.querySelector('#txtItem').value = editValue;
     const newPrice = document.querySelector('#txtPrice').value = editPrice;
 
@@ -88,6 +85,19 @@ function removeItem(arrIndex) {
     displayItems(aItems);
 }
 
+//Clear Local Storage
+// function clearStorage() {
+//     localStorage.removeItem('aItems');
+//     displayItems(aItems);
+// }
+
+//Clear the Storage back to default
+// document.querySelector('#clearItems').addEventListener('click', function() {
+//     clearStorage();
+//     displayItems(aItems);
+// });
+
+
 //Adding Item on Top of List
 document.querySelector('#btnAddTop').addEventListener('click', function() {
     const addTopValue = document.querySelector('#txtItem').value;
@@ -124,6 +134,7 @@ document.querySelector('#btnDelBot').addEventListener('click', function() {
 
 // Clear the entered fields
 function clearInputFields() {
+    document.querySelector('#indexNum').value = '';
     document.querySelector('#txtItem').value = '';
     document.querySelector('#txtPrice').value = '';
 }
