@@ -12,6 +12,7 @@
 
 <body>
     <div class="">
+        <input type="number" class="index-number" id="indexNum" disabled />
         <input type="text" id="txtItem" placeholder="Item Name">
         <br /><br />
         <input type="number" min="1" id="txtPrice" placeholder="Item Price">
@@ -20,11 +21,13 @@
         <br /><br />
         <button class="btn-onscreen" id="btnAddTop">Add Top</button>
         <br /><br />
-        <button class="btn-onscreen" id="btnAddBot">Add Botom</button>
+        <button class="btn-onscreen" id="btnAddBot">Add Bottom</button>
         <br /><br />
         <button class="btn-onscreen" id="btnDelTop">Remove Top</button>
         <br /><br />
         <button class="btn-onscreen" id="btnDelBot">Remove Bottom</button>
+        <br /><br />
+        <button class="btn-onscreen" id="clearItems" disabled>Clear Storage</button>
     </div>
     <div class="container">
         <ul class="ul-list" id="ul-lists"></ul>
